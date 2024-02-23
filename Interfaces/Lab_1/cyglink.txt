@@ -1,0 +1,1 @@
+"C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\main.obj"  TO "C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1" RS(256) PL(68) PW(78) 

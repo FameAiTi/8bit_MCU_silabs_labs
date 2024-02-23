@@ -1,0 +1,89 @@
+BL51 BANKED LINKER/LOCATER V6.20              02/24/2024  00:30:13  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
+C:\SILABS\MCU\IDEFILES\C51\BIN\BL51.EXE C:\rep\8bit_MCU_silabs_labs\Interfaces
+>> \Lab_1\main.obj TO C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 RS (2
+>> 56) PL (68) PW (78)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\main.obj (MAIN)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (MAIN)
+>> 
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     000CH     UNIT         ?C_C51STARTUP
+            CODE    080CH     0005H     UNIT         ?PR?MAIN?MAIN
+            CODE    0811H     0001H     UNIT         ?PR?INIT_DEVICE?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (M
+>> AIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?INIT_DEVICE?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (M
+>> AIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:080CH         PUBLIC        main
+  C:0811H         PUBLIC        Init_Device
+  -------         PROC          MAIN
+  C:080CH         LINE#         7
+  C:080CH         LINE#         8
+  C:080CH         LINE#         9
+  C:080FH         LINE#         11
+  C:080FH         LINE#         12
+  C:080FH         LINE#         14
+BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  00:30:13  PAGE 2
+
+
+  -------         ENDPROC       MAIN
+  -------         PROC          INIT_DEVICE
+  C:0811H         LINE#         17
+  C:0811H         LINE#         18
+  C:0811H         LINE#         19
+  -------         ENDPROC       INIT_DEVICE
+  -------         ENDMOD        MAIN
+
+******************************************************************************
+>> 
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0006H BYTE ( 0%) *
+>> 
+******************************************************************************
+>> 
+
+Program Size: data=9.0 xdata=0 code=21
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,42 @@
+C51 COMPILER V8.18   MAIN                                                                  02/24/2024 00:29:15 PAGE 1   
+
+
+C51 COMPILER V8.18, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\SiLabs\MCU\IDEfiles\C51\BIN\C51.exe main.c DB OE BR
+
+line level    source
+
+   1          
+   2          #include <c8051f060.h> 
+   3          
+   4          
+   5          void Init_Device(void); 
+   6          
+   7          void main (void) 
+   8          { 
+   9   1       Init_Device(); 
+  10   1      
+  11   1       while (1) 
+  12   1       { 
+  13   2      
+  14   2       }
+  15   1      }  
+  16          
+  17          void Init_Device(void)
+  18          { 
+  19   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      6    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
