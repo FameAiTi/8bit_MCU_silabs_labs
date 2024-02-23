@@ -1,0 +1,144 @@
+C51 COMPILER V8.18   LAB1                                                                  02/15/2024 11:55:28 PAGE 1   
+
+
+C51 COMPILER V8.18, COMPILATION OF MODULE LAB1
+OBJECT MODULE PLACED IN Lab1.OBJ
+COMPILER INVOKED BY: C:\SiLabs\MCU\IDEfiles\C51\BIN\C51.exe Lab1.c DB OE BR
+
+line level    source
+
+   1          #include "C8051F060.h"
+   2          
+   3          sbit a=P3^5;
+   4          
+   5          sbit b=P4^5;
+   6          
+   7          void PORT_sett (void);
+   8          
+   9          void work (void);
+  10          
+  11          void preobr (void);
+  12          void preobr_norm (int value_diods);
+  13          
+  14          int d=0x8,f=0xff;                   // d-количество горящих светодиодов
+  15          
+  16                                                         // f-тушение светодиодов
+  17          
+  18          long int l = 0;
+  19          int k = 0x01;
+  20          
+  21          void main (void)
+  22          
+  23          {        SFRPAGE = CONFIG_PAGE;
+  24   1      
+  25   1       EA=0;                                                        //
+  26   1      
+  27   1       WDTCN = 0xDE;    
+  28   1      
+  29   1       WDTCN = 0xAD;                   // выключение watchdog timer
+  30   1      
+  31   1       EA=1;                                                       
+  32   1      
+  33   1       OSCICN = 0x83;                     // Настройка f=24.5 MHz
+  34   1      
+  35   1       PORT_sett ();
+  36   1      
+  37   1      
+  38   1      
+  39   1      
+  40   1      
+  41   1       while(1)
+  42   1      
+  43   1       {
+  44   2      
+  45   2              preobr_norm(k);
+  46   2              work ();
+  47   2              for(l = 0; l < 15000; l++);
+  48   2              k*=2;
+  49   2              if(k > 0x80)
+  50   2                      k = 1;
+  51   2               
+  52   2       }
+  53   1      
+  54   1      }
+  55          
+C51 COMPILER V8.18   LAB1                                                                  02/15/2024 11:55:28 PAGE 2   
+
+  56          //настройка портов
+  57          
+  58          void PORT_sett (void)
+  59          
+  60          {
+  61   1      
+  62   1       SFRPAGE = CONFIG_PAGE;  
+  63   1      
+  64   1       XBR2 = 0x40;                //включаю матрицу ввода - вывода
+  65   1      
+  66   1       P3MDOUT=0xFF;
+  67   1      
+  68   1       P4MDOUT=0xFF;
+  69   1      
+  70   1       P5MDOUT=0xFF;
+  71   1      
+  72   1       P7MDOUT=0xFF;                  //настройка портов Р3-Р5, Р7 на вывод       
+  73   1      
+  74   1      }
+  75          
+  76          void work (void)
+  77          
+  78          { 
+  79   1              a=1;                               //запрет работы дешифратора
+  80   1      
+  81   1               b=0;                               //запрет работы регистра DD12
+  82   1      
+  83   1               P5=f;                             //тушение светодиодов
+  84   1      
+  85   1               P7=0x04;                       //включение регистра выбора индикатора
+  86   1      
+  87   1               b=1;                    //Разрешение работы регистра DD12
+  88   1      
+  89   1               a=0;                               //Разрешение работы дешифратора
+  90   1      
+  91   1      }
+  92          
+  93          void preobr (void)                   // преобразование переменной d в
+  94          
+  95          {                                             //количество горящих светодиодов        
+  96   1      
+  97   1               int i,c=0xFE;
+  98   1      
+  99   1               i=d;
+ 100   1      
+ 101   1               while (i>0)
+ 102   1      
+ 103   1               {f=f&c;                         // логическое И
+ 104   2      
+ 105   2                         c=c<<1;               // побитовый сдвиг влево на 1
+ 106   2      
+ 107   2                         i--;}                      // декримент i
+ 108   1      
+ 109   1      }
+ 110          
+ 111          void preobr_norm (int value_diods)                   // преобразование переменной d в
+ 112          
+ 113          {                                             //количество горящих светодиодов        
+ 114   1      
+ 115   1               f = (~value_diods);
+ 116   1      
+ 117   1      }
+C51 COMPILER V8.18   LAB1                                                                  02/15/2024 11:55:28 PAGE 3   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    201    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

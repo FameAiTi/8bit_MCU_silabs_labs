@@ -1,0 +1,1 @@
+"C:\rep\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1.obj"  TO "C:\rep\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1"  RS(256) PL(68) PW(78)   
