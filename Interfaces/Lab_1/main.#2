@@ -1,37 +1,60 @@
-//реализует бегущие огни на светодиодах 
-//количество горящих светодиодов изменяется по нажатию кнопок 
-//кнопки вызывают внешнее прерывание 
-#include <c8051f060.h> 
+
+#include <c8051f060.h>
+ 
 void Init_Device(void);
+
 unsigned char GetPressButtom(void);
 
 unsigned char state_led = 0;
-long int i = 0;
+
+unsigned char timer_flag = 0;
+
+unsigned char temp = 0;
+
 void main (void) 
 { 
  Init_Device();
- 
+
  
  
  while (1) //основной бесконечный цикл 
  { 
- 	P3 = (GetPressButtom() & state_led);
-	state_led = (~state_led);
-	for (R1=0; R1<6; R1++) {  
- 	for (R2=0; R2<100; R2++) { 
- 	for (R3=0; R3<100; R3++); }}
+	
+	if(timer_flag)
+	{
+		temp = ~P2;
+		P3 = ((~P2) & state_led);
+   		state_led = (~state_led);
+		timer_flag = 0;
+	}
+
  }
+
 }  
 
-unsigned char GetPressButtom(void)
+
+
+
+void Timer3_ISR (void) interrupt 14
 {
-	return ~P2;
+   timer_flag = 1;
 }
+
+
 
 
 
 // Peripheral specific initialization functions,
 // Called from the Init_Device() function
+void Timer_Init()
+{
+    SFRPAGE   = TMR3_PAGE;
+    TMR3CN    = 0x04;
+    TMR3CF    = 0x02;
+    RCAP3L    = 0xC6;
+    RCAP3H    = 0x06;
+}
+
 void Port_IO_Init()
 {
     // P0.0  -  TX0 (UART0), Open-Drain, Digital
@@ -52,9 +75,9 @@ void Port_IO_Init()
     // P1.6  -  CEX4 (PCA),  Open-Drain, Digital
     // P1.7  -  CEX5 (PCA),  Open-Drain, Digital
 
-    // P2.0  -  Unassigned,  Open-Drain, Digital
-    // P2.1  -  Unassigned,  Open-Drain, Digital
-    // P2.2  -  Unassigned,  Open-Drain, Digital
+    // P2.0  -  ECI,         Open-Drain, Digital
+    // P2.1  -  INT0 (Tmr0), Open-Drain, Digital
+    // P2.2  -  INT1 (Tmr1), Open-Drain, Digital
     // P2.3  -  Unassigned,  Open-Drain, Digital
     // P2.4  -  Unassigned,  Open-Drain, Digital
     // P2.5  -  Unassigned,  Open-Drain, Digital
@@ -72,27 +95,23 @@ void Port_IO_Init()
 
     SFRPAGE   = CONFIG_PAGE;
     P3MDOUT   = 0xFF;
-    XBR0      = 0x37;
+    XBR0      = 0x77;
+    XBR1      = 0x14;
     XBR2      = 0x44;
-}
-
-void Oscillator_Init()
-{
-    SFRPAGE   = CONFIG_PAGE;
-    OSCICN    = 0x83;
 }
 
 void Interrupts_Init()
 {
-    IE        = 0x85;
+    IE        = 0x80;
+    EIE2      = 0x01;
 }
 
 // Initialization function for device,
 // Call Init_Device() from your main program
 void Init_Device(void)
 {
+    Timer_Init();
     Port_IO_Init();
-    Oscillator_Init();
     Interrupts_Init();
 }
 
