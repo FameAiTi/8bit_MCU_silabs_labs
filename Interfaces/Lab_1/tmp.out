@@ -1,5 +1,14 @@
 
-C51 COMPILER V8.18 - SN: Eval Version
+BL51 BANKED LINKER/LOCATER V6.20 - SN: Eval Version
 COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\main.obj"  TO "C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1" RS(256) PL(68) PW(78) 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 005FH BYTE ( 4%) *
+******************************************************************************
+
+>> 
+>> 
+>> 
+Program Size: data=12.0 xdata=0 code=239
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

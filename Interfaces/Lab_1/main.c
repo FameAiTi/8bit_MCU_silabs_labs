@@ -13,6 +13,9 @@ unsigned char temp = 0;
 
 void main (void) 
 { 
+
+ WDTCN = 0xde;
+ WDTCN = 0xad;
  Init_Device();
 
  
@@ -22,14 +25,7 @@ void main (void)
 	
 	if(timer_flag)
 	{
-		temp = ~P2;
-		P3 = ((~P2) & state_led);
-   		state_led = (~state_led);
-		timer_flag = 0;
-		if ( P3 > 0 )
-		{
-			temp++;
-		}
+		
 	}
 
  }
@@ -41,7 +37,12 @@ void main (void)
 
 void Timer3_ISR (void) interrupt 14
 {
-   timer_flag = 1;
+
+   temp = ~P2;
+	P3 = ((~P2) & state_led);
+		state_led = (~state_led);
+
+	TF3 = 0;                               // clear TF3
 }
 
 

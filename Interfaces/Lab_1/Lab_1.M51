@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.20              02/24/2024  15:31:19  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.20              02/24/2024  15:42:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
@@ -34,13 +34,13 @@ LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (MAIN)
             CODE    0073H     0003H     ABSOLUTE     
                     0076H     078AH                  *** GAP ***
             CODE    0800H     008CH     UNIT         ?C_C51STARTUP
-            CODE    088CH     0024H     UNIT         ?PR?MAIN?MAIN
-            CODE    08B0H     0010H     UNIT         ?PR?TIMER_INIT?MAIN
-            CODE    08C0H     0010H     UNIT         ?PR?PORT_IO_INIT?MAIN
-            CODE    08D0H     000AH     UNIT         ?C_INITSEG
-            CODE    08DAH     0009H     UNIT         ?PR?INIT_DEVICE?MAIN
-            CODE    08E3H     0007H     UNIT         ?PR?INTERRUPTS_INIT?MAIN
-            CODE    08EAH     0004H     UNIT         ?PR?TIMER3_ISR?MAIN
+            CODE    088CH     0016H     UNIT         ?PR?TIMER3_ISR?MAIN
+            CODE    08A2H     0010H     UNIT         ?PR?TIMER_INIT?MAIN
+            CODE    08B2H     0010H     UNIT         ?PR?PORT_IO_INIT?MAIN
+            CODE    08C2H     000DH     UNIT         ?PR?MAIN?MAIN
+            CODE    08CFH     000AH     UNIT         ?C_INITSEG
+            CODE    08D9H     0009H     UNIT         ?PR?INIT_DEVICE?MAIN
+            CODE    08E2H     0007H     UNIT         ?PR?INTERRUPTS_INIT?MAIN
 
 
 
@@ -67,7 +67,7 @@ SEGMENT
 
 SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (M
 >> AIN)
-BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  15:31:19  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  15:42:12  PAGE 2
 
 
 
@@ -76,97 +76,96 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (M
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00FFH         PUBLIC        WDTCN
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00E7H         PUBLIC        EIE2
-  C:08EAH         PUBLIC        Timer3_ISR
+  C:088CH         PUBLIC        Timer3_ISR
   D:0084H         PUBLIC        SFRPAGE
   D:00A8H         PUBLIC        IE
   D:00A7H         PUBLIC        P3MDOUT
-  C:08C0H         PUBLIC        Port_IO_Init
+  C:08B2H         PUBLIC        Port_IO_Init
   D:00E1H         PUBLIC        XBR0
   D:00E2H         PUBLIC        XBR1
   D:00E3H         PUBLIC        XBR2
   D:0008H         PUBLIC        timer_flag
   D:00CBH         PUBLIC        RCAP3H
-  C:088CH         PUBLIC        main
+  C:08C2H         PUBLIC        main
   D:00CAH         PUBLIC        RCAP3L
   D:00C9H         PUBLIC        TMR3CF
   D:0009H         PUBLIC        temp
   D:00C8H         PUBLIC        TMR3CN
   D:000AH         PUBLIC        state_led
-  C:08E3H         PUBLIC        Interrupts_Init
-  C:08DAH         PUBLIC        Init_Device
-  C:08B0H         PUBLIC        Timer_Init
+  C:08E2H         PUBLIC        Interrupts_Init
+  C:08D9H         PUBLIC        Init_Device
+  B:00C8H.7       PUBLIC        TF3
+  C:08A2H         PUBLIC        Timer_Init
   -------         PROC          MAIN
-  C:088CH         LINE#         14
-  C:088CH         LINE#         15
-  C:088CH         LINE#         16
-  C:088FH         LINE#         20
-  C:088FH         LINE#         21
-  C:088FH         LINE#         23
-  C:0893H         LINE#         24
-  C:0893H         LINE#         25
-  C:0898H         LINE#         26
-  C:089FH         LINE#         27
-  C:08A2H         LINE#         28
-  C:08A5H         LINE#         29
-  C:08ACH         LINE#         30
-  C:08ACH         LINE#         31
-  C:08AEH         LINE#         32
-  C:08AEH         LINE#         33
-  C:08AEH         LINE#         35
+  C:08C2H         LINE#         14
+  C:08C2H         LINE#         15
+  C:08C2H         LINE#         17
+  C:08C5H         LINE#         18
+  C:08C8H         LINE#         19
+  C:08CBH         LINE#         23
+  C:08CBH         LINE#         24
+  C:08CBH         LINE#         26
+  C:08CDH         LINE#         27
+  C:08CDH         LINE#         29
+  C:08CDH         LINE#         31
   -------         ENDPROC       MAIN
   -------         PROC          TIMER3_ISR
-  C:08EAH         LINE#         42
-  C:08EAH         LINE#         44
-  C:08EDH         LINE#         45
+  C:088CH         LINE#         38
+  C:088EH         LINE#         41
+  C:0893H         LINE#         42
+  C:089AH         LINE#         43
+  C:089DH         LINE#         45
+  C:089FH         LINE#         46
   -------         ENDPROC       TIMER3_ISR
   -------         PROC          TIMER_INIT
-  C:08B0H         LINE#         53
-  C:08B0H         LINE#         54
-  C:08B0H         LINE#         55
-  C:08B3H         LINE#         56
-  C:08B6H         LINE#         57
-  C:08B9H         LINE#         58
-  C:08BCH         LINE#         59
-  C:08BFH         LINE#         60
+  C:08A2H         LINE#         54
+  C:08A2H         LINE#         55
+  C:08A2H         LINE#         56
+  C:08A5H         LINE#         57
+  C:08A8H         LINE#         58
+  C:08ABH         LINE#         59
+  C:08AEH         LINE#         60
+  C:08B1H         LINE#         61
   -------         ENDPROC       TIMER_INIT
   -------         PROC          PORT_IO_INIT
-  C:08C0H         LINE#         62
-  C:08C0H         LINE#         63
-BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  15:31:19  PAGE 3
+  C:08B2H         LINE#         63
+  C:08B2H         LINE#         64
+  C:08B2H         LINE#         101
+BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  15:42:12  PAGE 3
 
 
-  C:08C0H         LINE#         100
-  C:08C3H         LINE#         101
-  C:08C6H         LINE#         102
-  C:08C9H         LINE#         103
-  C:08CCH         LINE#         104
-  C:08CFH         LINE#         105
+  C:08B5H         LINE#         102
+  C:08B8H         LINE#         103
+  C:08BBH         LINE#         104
+  C:08BEH         LINE#         105
+  C:08C1H         LINE#         106
   -------         ENDPROC       PORT_IO_INIT
   -------         PROC          INTERRUPTS_INIT
-  C:08E3H         LINE#         107
-  C:08E3H         LINE#         108
-  C:08E3H         LINE#         109
-  C:08E6H         LINE#         110
-  C:08E9H         LINE#         111
+  C:08E2H         LINE#         108
+  C:08E2H         LINE#         109
+  C:08E2H         LINE#         110
+  C:08E5H         LINE#         111
+  C:08E8H         LINE#         112
   -------         ENDPROC       INTERRUPTS_INIT
   -------         PROC          INIT_DEVICE
-  C:08DAH         LINE#         115
-  C:08DAH         LINE#         116
-  C:08DAH         LINE#         117
-  C:08DDH         LINE#         118
-  C:08E0H         LINE#         119
+  C:08D9H         LINE#         116
+  C:08D9H         LINE#         117
+  C:08D9H         LINE#         118
+  C:08DCH         LINE#         119
+  C:08DFH         LINE#         120
   -------         ENDPROC       INIT_DEVICE
   -------         ENDMOD        MAIN
 
 ******************************************************************************
 >> 
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0064H BYTE ( 4%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 005FH BYTE ( 4%) *
 >> 
 ******************************************************************************
 >> 
 
-Program Size: data=12.0 xdata=0 code=244
+Program Size: data=12.0 xdata=0 code=239
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

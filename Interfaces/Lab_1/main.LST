@@ -1,4 +1,4 @@
-C51 COMPILER V8.18   MAIN                                                                  02/24/2024 15:36:33 PAGE 1   
+C51 COMPILER V8.18   MAIN                                                                  02/24/2024 15:42:10 PAGE 1   
 
 
 C51 COMPILER V8.18, COMPILATION OF MODULE MAIN
@@ -22,120 +22,121 @@ line level    source
   13          
   14          void main (void) 
   15          { 
-  16   1       Init_Device();
-  17   1      
-  18   1       
-  19   1       
-  20   1       while (1) //основной бесконечный цикл 
-  21   1       { 
-  22   2              
-  23   2              if(timer_flag)
-  24   2              {
-  25   3                      temp = ~P2;
-  26   3                      P3 = ((~P2) & state_led);
-  27   3                      state_led = (~state_led);
-  28   3                      timer_flag = 0;
-  29   3                      if ( P3 > 0 )
-  30   3                      {
-  31   4                              temp++;
-  32   4                      }
-  33   3              }
-  34   2      
-  35   2       }
-  36   1      
-  37   1      }  
-  38          
-  39          
-  40          
-  41          
-  42          void Timer3_ISR (void) interrupt 14
-  43          {
-  44   1         timer_flag = 1;
-  45   1      }
-  46          
+  16   1      
+  17   1       WDTCN = 0xde;
+  18   1       WDTCN = 0xad;
+  19   1       Init_Device();
+  20   1      
+  21   1       
+  22   1       
+  23   1       while (1) //основной бесконечный цикл 
+  24   1       { 
+  25   2              
+  26   2              if(timer_flag)
+  27   2              {
+  28   3                      
+  29   3              }
+  30   2      
+  31   2       }
+  32   1      
+  33   1      }  
+  34          
+  35          
+  36          
+  37          
+  38          void Timer3_ISR (void) interrupt 14
+  39          {
+  40   1      
+  41   1         temp = ~P2;
+  42   1              P3 = ((~P2) & state_led);
+  43   1                      state_led = (~state_led);
+  44   1      
+  45   1              TF3 = 0;                               // clear TF3
+  46   1      }
   47          
   48          
   49          
   50          
-  51          // Peripheral specific initialization functions,
-  52          // Called from the Init_Device() function
-  53          void Timer_Init()
-  54          {
-  55   1          SFRPAGE   = TMR3_PAGE;
-C51 COMPILER V8.18   MAIN                                                                  02/24/2024 15:36:33 PAGE 2   
+  51          
+  52          // Peripheral specific initialization functions,
+  53          // Called from the Init_Device() function
+  54          void Timer_Init()
+  55          {
+C51 COMPILER V8.18   MAIN                                                                  02/24/2024 15:42:10 PAGE 2   
 
-  56   1          TMR3CN    = 0x04;
-  57   1          TMR3CF    = 0x02;
-  58   1          RCAP3L    = 0xC6;
-  59   1          RCAP3H    = 0x06;
-  60   1      }
-  61          
-  62          void Port_IO_Init()
-  63          {
-  64   1          // P0.0  -  TX0 (UART0), Open-Drain, Digital
-  65   1          // P0.1  -  RX0 (UART0), Open-Drain, Digital
-  66   1          // P0.2  -  SCK  (SPI0), Open-Drain, Digital
-  67   1          // P0.3  -  MISO (SPI0), Open-Drain, Digital
-  68   1          // P0.4  -  MOSI (SPI0), Open-Drain, Digital
-  69   1          // P0.5  -  NSS  (SPI0), Open-Drain, Digital
-  70   1          // P0.6  -  SDA (SMBus), Open-Drain, Digital
-  71   1          // P0.7  -  SCL (SMBus), Open-Drain, Digital
-  72   1      
-  73   1          // P1.0  -  TX1 (UART1), Open-Drain, Digital
-  74   1          // P1.1  -  RX1 (UART1), Open-Drain, Digital
-  75   1          // P1.2  -  CEX0 (PCA),  Open-Drain, Digital
-  76   1          // P1.3  -  CEX1 (PCA),  Open-Drain, Digital
-  77   1          // P1.4  -  CEX2 (PCA),  Open-Drain, Digital
-  78   1          // P1.5  -  CEX3 (PCA),  Open-Drain, Digital
-  79   1          // P1.6  -  CEX4 (PCA),  Open-Drain, Digital
-  80   1          // P1.7  -  CEX5 (PCA),  Open-Drain, Digital
-  81   1      
-  82   1          // P2.0  -  ECI,         Open-Drain, Digital
-  83   1          // P2.1  -  INT0 (Tmr0), Open-Drain, Digital
-  84   1          // P2.2  -  INT1 (Tmr1), Open-Drain, Digital
-  85   1          // P2.3  -  Unassigned,  Open-Drain, Digital
-  86   1          // P2.4  -  Unassigned,  Open-Drain, Digital
-  87   1          // P2.5  -  Unassigned,  Open-Drain, Digital
-  88   1          // P2.6  -  Unassigned,  Open-Drain, Digital
-  89   1          // P2.7  -  Unassigned,  Open-Drain, Digital
-  90   1      
-  91   1          // P3.0  -  Unassigned,  Push-Pull,  Digital
-  92   1          // P3.1  -  Unassigned,  Push-Pull,  Digital
-  93   1          // P3.2  -  Unassigned,  Push-Pull,  Digital
-  94   1          // P3.3  -  Unassigned,  Push-Pull,  Digital
-  95   1          // P3.4  -  Unassigned,  Push-Pull,  Digital
-  96   1          // P3.5  -  Unassigned,  Push-Pull,  Digital
-  97   1          // P3.6  -  Unassigned,  Push-Pull,  Digital
-  98   1          // P3.7  -  Unassigned,  Push-Pull,  Digital
-  99   1      
- 100   1          SFRPAGE   = CONFIG_PAGE;
- 101   1          P3MDOUT   = 0xFF;
- 102   1          XBR0      = 0x77;
- 103   1          XBR1      = 0x14;
- 104   1          XBR2      = 0x44;
- 105   1      }
- 106          
- 107          void Interrupts_Init()
- 108          {
- 109   1          IE        = 0x80;
- 110   1          EIE2      = 0x01;
- 111   1      }
- 112          
- 113          // Initialization function for device,
- 114          // Call Init_Device() from your main program
- 115          void Init_Device(void)
- 116          {
- 117   1          Timer_Init();
-C51 COMPILER V8.18   MAIN                                                                  02/24/2024 15:36:33 PAGE 3   
+  56   1          SFRPAGE   = TMR3_PAGE;
+  57   1          TMR3CN    = 0x04;
+  58   1          TMR3CF    = 0x02;
+  59   1          RCAP3L    = 0xC6;
+  60   1          RCAP3H    = 0x06;
+  61   1      }
+  62          
+  63          void Port_IO_Init()
+  64          {
+  65   1          // P0.0  -  TX0 (UART0), Open-Drain, Digital
+  66   1          // P0.1  -  RX0 (UART0), Open-Drain, Digital
+  67   1          // P0.2  -  SCK  (SPI0), Open-Drain, Digital
+  68   1          // P0.3  -  MISO (SPI0), Open-Drain, Digital
+  69   1          // P0.4  -  MOSI (SPI0), Open-Drain, Digital
+  70   1          // P0.5  -  NSS  (SPI0), Open-Drain, Digital
+  71   1          // P0.6  -  SDA (SMBus), Open-Drain, Digital
+  72   1          // P0.7  -  SCL (SMBus), Open-Drain, Digital
+  73   1      
+  74   1          // P1.0  -  TX1 (UART1), Open-Drain, Digital
+  75   1          // P1.1  -  RX1 (UART1), Open-Drain, Digital
+  76   1          // P1.2  -  CEX0 (PCA),  Open-Drain, Digital
+  77   1          // P1.3  -  CEX1 (PCA),  Open-Drain, Digital
+  78   1          // P1.4  -  CEX2 (PCA),  Open-Drain, Digital
+  79   1          // P1.5  -  CEX3 (PCA),  Open-Drain, Digital
+  80   1          // P1.6  -  CEX4 (PCA),  Open-Drain, Digital
+  81   1          // P1.7  -  CEX5 (PCA),  Open-Drain, Digital
+  82   1      
+  83   1          // P2.0  -  ECI,         Open-Drain, Digital
+  84   1          // P2.1  -  INT0 (Tmr0), Open-Drain, Digital
+  85   1          // P2.2  -  INT1 (Tmr1), Open-Drain, Digital
+  86   1          // P2.3  -  Unassigned,  Open-Drain, Digital
+  87   1          // P2.4  -  Unassigned,  Open-Drain, Digital
+  88   1          // P2.5  -  Unassigned,  Open-Drain, Digital
+  89   1          // P2.6  -  Unassigned,  Open-Drain, Digital
+  90   1          // P2.7  -  Unassigned,  Open-Drain, Digital
+  91   1      
+  92   1          // P3.0  -  Unassigned,  Push-Pull,  Digital
+  93   1          // P3.1  -  Unassigned,  Push-Pull,  Digital
+  94   1          // P3.2  -  Unassigned,  Push-Pull,  Digital
+  95   1          // P3.3  -  Unassigned,  Push-Pull,  Digital
+  96   1          // P3.4  -  Unassigned,  Push-Pull,  Digital
+  97   1          // P3.5  -  Unassigned,  Push-Pull,  Digital
+  98   1          // P3.6  -  Unassigned,  Push-Pull,  Digital
+  99   1          // P3.7  -  Unassigned,  Push-Pull,  Digital
+ 100   1      
+ 101   1          SFRPAGE   = CONFIG_PAGE;
+ 102   1          P3MDOUT   = 0xFF;
+ 103   1          XBR0      = 0x77;
+ 104   1          XBR1      = 0x14;
+ 105   1          XBR2      = 0x44;
+ 106   1      }
+ 107          
+ 108          void Interrupts_Init()
+ 109          {
+ 110   1          IE        = 0x80;
+ 111   1          EIE2      = 0x01;
+ 112   1      }
+ 113          
+ 114          // Initialization function for device,
+ 115          // Call Init_Device() from your main program
+ 116          void Init_Device(void)
+ 117          {
+C51 COMPILER V8.18   MAIN                                                                  02/24/2024 15:42:10 PAGE 3   
 
- 118   1          Port_IO_Init();
- 119   1          Interrupts_Init();
- 120   1      }
- 121          
+ 118   1          Timer_Init();
+ 119   1          Port_IO_Init();
+ 120   1          Interrupts_Init();
+ 121   1      }
+ 122          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     88    ----
+   CODE SIZE        =     83    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
