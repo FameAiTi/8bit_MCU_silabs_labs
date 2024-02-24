@@ -2,50 +2,39 @@
 //количество горящих светодиодов изменяется по нажатию кнопок 
 //кнопки вызывают внешнее прерывание 
 #include <c8051f060.h> 
-//глобальные константы 
-#define light_init 0x01 
-#define light_1 0x11 
-#define light_2 0x55 
-//глобальные переменные 
+void Init_Device(void);
+unsigned char GetPressButtom(void);
+
+unsigned char state_led = 0;
+long int i = 0;
 char R1=0; 
 char R2=0; 
-char R3=0; 
-unsigned char lights; 
-//прототипы программ 
-void But1_press (void); 
-void But2_press (void);
-void Init_Device(void); 
-//начало основной программы: 
+char R3=0;
 void main (void) 
 { 
- Init_Device(); 
- lights = light_init; 
+ Init_Device();
+ 
+ 
+ 
  while (1) //основной бесконечный цикл 
  { 
- for (R1=0; R1<10; R1++) { //задержка 
- for (R2=0; R2<100; R2++) { 
- for (R3=0; R3<100; R3++); }} 
- 
- lights = (lights >> 7) | (lights << 1);// циклический сдвиг 
- P3=lights; 
- }// end of while(1) 
-} // end of main() 
-//прерывание от нажатия первой кнопки 
-void But1_press () interrupt 0 
-{ 
-lights = light_1; 
-IE0=0; 
-} 
-//прерывание от нажатия второй кнопки 
-void But2_press () interrupt 2 
-{ 
-lights = light_2; 
-IE1=0; 
+ 	P3 = (GetPressButtom() & state_led);
+	state_led = (~state_led);
+	for (R1=0; R1<6; R1++) {  
+ 	for (R2=0; R2<100; R2++) { 
+ 	for (R3=0; R3<100; R3++); }}
+ }
+}  
+
+unsigned char GetPressButtom(void)
+{
+	return ~P2;
 }
+
+
 
 // Peripheral specific initialization functions,
 // Called from the Init_Device() function
-
 void Port_IO_Init()
 {
     // P0.0  -  TX0 (UART0), Open-Drain, Digital
@@ -66,9 +55,9 @@ void Port_IO_Init()
     // P1.6  -  CEX4 (PCA),  Open-Drain, Digital
     // P1.7  -  CEX5 (PCA),  Open-Drain, Digital
 
-    // P2.0  -  ECI,         Open-Drain, Digital
-    // P2.1  -  INT0 (Tmr0), Open-Drain, Digital
-    // P2.2  -  INT1 (Tmr1), Open-Drain, Digital
+    // P2.0  -  Unassigned,  Open-Drain, Digital
+    // P2.1  -  Unassigned,  Open-Drain, Digital
+    // P2.2  -  Unassigned,  Open-Drain, Digital
     // P2.3  -  Unassigned,  Open-Drain, Digital
     // P2.4  -  Unassigned,  Open-Drain, Digital
     // P2.5  -  Unassigned,  Open-Drain, Digital
@@ -86,8 +75,7 @@ void Port_IO_Init()
 
     SFRPAGE   = CONFIG_PAGE;
     P3MDOUT   = 0xFF;
-    XBR0      = 0x77;
-    XBR1      = 0x14;
+    XBR0      = 0x37;
     XBR2      = 0x44;
 }
 

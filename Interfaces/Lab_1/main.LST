@@ -1,4 +1,4 @@
-C51 COMPILER V8.18   MAIN                                                                  02/24/2024 13:54:54 PAGE 1   
+C51 COMPILER V8.18   MAIN                                                                  02/24/2024 14:36:55 PAGE 1   
 
 
 C51 COMPILER V8.18, COMPILATION OF MODULE MAIN
@@ -11,127 +11,113 @@ line level    source
    2          //количество горящих светодиодов изменяется по нажатию кнопок 
    3          //кнопки вызывают внешнее прерывание 
    4          #include <c8051f060.h> 
-   5          //глобальные константы 
-   6          #define light_init 0x01 
-   7          #define light_1 0x11 
-   8          #define light_2 0x55 
-   9          //глобальные переменные 
+   5          void Init_Device(void);
+   6          unsigned char GetPressButtom(void);
+   7          
+   8          unsigned char state_led = 0;
+   9          long int i = 0;
   10          char R1=0; 
   11          char R2=0; 
-  12          char R3=0; 
-  13          unsigned char lights; 
-  14          //прототипы программ 
-  15          void But1_press (void); 
-  16          void But2_press (void);
-  17          void Init_Device(void); 
-  18          //начало основной программы: 
-  19          void main (void) 
-  20          { 
-  21   1       Init_Device(); 
-  22   1       lights = light_init; 
-  23   1       while (1) //основной бесконечный цикл 
-  24   1       { 
-  25   2       for (R1=0; R1<10; R1++) { //задержка 
-  26   3       for (R2=0; R2<100; R2++) { 
-  27   4       for (R3=0; R3<100; R3++); }} 
-  28   2       
-  29   2       lights = (lights >> 7) | (lights << 1);// циклический сдвиг 
-  30   2       P3=lights; 
-  31   2       }// end of while(1) 
-  32   1      } // end of main() 
-  33          //прерывание от нажатия первой кнопки 
-  34          void But1_press () interrupt 0 
-  35          { 
-  36   1      lights = light_1; 
-  37   1      IE0=0; 
-  38   1      } 
-  39          //прерывание от нажатия второй кнопки 
-  40          void But2_press () interrupt 2 
-  41          { 
-  42   1      lights = light_2; 
-  43   1      IE1=0; 
-  44   1      }
-  45          
-  46          // Peripheral specific initialization functions,
-  47          // Called from the Init_Device() function
-  48          
-  49          void Port_IO_Init()
-  50          {
-  51   1          // P0.0  -  TX0 (UART0), Open-Drain, Digital
-  52   1          // P0.1  -  RX0 (UART0), Open-Drain, Digital
-  53   1          // P0.2  -  SCK  (SPI0), Open-Drain, Digital
-  54   1          // P0.3  -  MISO (SPI0), Open-Drain, Digital
-  55   1          // P0.4  -  MOSI (SPI0), Open-Drain, Digital
-C51 COMPILER V8.18   MAIN                                                                  02/24/2024 13:54:54 PAGE 2   
+  12          char R3=0;
+  13          void main (void) 
+  14          { 
+  15   1       Init_Device();
+  16   1       
+  17   1       
+  18   1       
+  19   1       while (1) //основной бесконечный цикл 
+  20   1       { 
+  21   2              P3 = (GetPressButtom() & state_led);
+  22   2              state_led = (~state_led);
+  23   2              for (R1=0; R1<6; R1++) {  
+  24   3              for (R2=0; R2<100; R2++) { 
+  25   4              for (R3=0; R3<100; R3++); }}
+  26   2       }
+  27   1      }  
+  28          
+  29          unsigned char GetPressButtom(void)
+  30          {
+  31   1              return ~P2;
+  32   1      }
+  33          
+  34          
+  35          
+  36          // Peripheral specific initialization functions,
+  37          // Called from the Init_Device() function
+  38          void Port_IO_Init()
+  39          {
+  40   1          // P0.0  -  TX0 (UART0), Open-Drain, Digital
+  41   1          // P0.1  -  RX0 (UART0), Open-Drain, Digital
+  42   1          // P0.2  -  SCK  (SPI0), Open-Drain, Digital
+  43   1          // P0.3  -  MISO (SPI0), Open-Drain, Digital
+  44   1          // P0.4  -  MOSI (SPI0), Open-Drain, Digital
+  45   1          // P0.5  -  NSS  (SPI0), Open-Drain, Digital
+  46   1          // P0.6  -  SDA (SMBus), Open-Drain, Digital
+  47   1          // P0.7  -  SCL (SMBus), Open-Drain, Digital
+  48   1      
+  49   1          // P1.0  -  TX1 (UART1), Open-Drain, Digital
+  50   1          // P1.1  -  RX1 (UART1), Open-Drain, Digital
+  51   1          // P1.2  -  CEX0 (PCA),  Open-Drain, Digital
+  52   1          // P1.3  -  CEX1 (PCA),  Open-Drain, Digital
+  53   1          // P1.4  -  CEX2 (PCA),  Open-Drain, Digital
+  54   1          // P1.5  -  CEX3 (PCA),  Open-Drain, Digital
+  55   1          // P1.6  -  CEX4 (PCA),  Open-Drain, Digital
+C51 COMPILER V8.18   MAIN                                                                  02/24/2024 14:36:55 PAGE 2   
 
-  56   1          // P0.5  -  NSS  (SPI0), Open-Drain, Digital
-  57   1          // P0.6  -  SDA (SMBus), Open-Drain, Digital
-  58   1          // P0.7  -  SCL (SMBus), Open-Drain, Digital
-  59   1      
-  60   1          // P1.0  -  TX1 (UART1), Open-Drain, Digital
-  61   1          // P1.1  -  RX1 (UART1), Open-Drain, Digital
-  62   1          // P1.2  -  CEX0 (PCA),  Open-Drain, Digital
-  63   1          // P1.3  -  CEX1 (PCA),  Open-Drain, Digital
-  64   1          // P1.4  -  CEX2 (PCA),  Open-Drain, Digital
-  65   1          // P1.5  -  CEX3 (PCA),  Open-Drain, Digital
-  66   1          // P1.6  -  CEX4 (PCA),  Open-Drain, Digital
-  67   1          // P1.7  -  CEX5 (PCA),  Open-Drain, Digital
-  68   1      
-  69   1          // P2.0  -  ECI,         Open-Drain, Digital
-  70   1          // P2.1  -  INT0 (Tmr0), Open-Drain, Digital
-  71   1          // P2.2  -  INT1 (Tmr1), Open-Drain, Digital
-  72   1          // P2.3  -  Unassigned,  Open-Drain, Digital
-  73   1          // P2.4  -  Unassigned,  Open-Drain, Digital
-  74   1          // P2.5  -  Unassigned,  Open-Drain, Digital
-  75   1          // P2.6  -  Unassigned,  Open-Drain, Digital
-  76   1          // P2.7  -  Unassigned,  Open-Drain, Digital
-  77   1      
-  78   1          // P3.0  -  Unassigned,  Push-Pull,  Digital
-  79   1          // P3.1  -  Unassigned,  Push-Pull,  Digital
-  80   1          // P3.2  -  Unassigned,  Push-Pull,  Digital
-  81   1          // P3.3  -  Unassigned,  Push-Pull,  Digital
-  82   1          // P3.4  -  Unassigned,  Push-Pull,  Digital
-  83   1          // P3.5  -  Unassigned,  Push-Pull,  Digital
-  84   1          // P3.6  -  Unassigned,  Push-Pull,  Digital
-  85   1          // P3.7  -  Unassigned,  Push-Pull,  Digital
-  86   1      
-  87   1          SFRPAGE   = CONFIG_PAGE;
-  88   1          P3MDOUT   = 0xFF;
-  89   1          XBR0      = 0x77;
-  90   1          XBR1      = 0x14;
-  91   1          XBR2      = 0x44;
-  92   1      }
-  93          
-  94          void Oscillator_Init()
-  95          {
-  96   1          SFRPAGE   = CONFIG_PAGE;
-  97   1          OSCICN    = 0x83;
-  98   1      }
-  99          
- 100          void Interrupts_Init()
- 101          {
- 102   1          IE        = 0x85;
- 103   1      }
- 104          
- 105          // Initialization function for device,
- 106          // Call Init_Device() from your main program
- 107          void Init_Device(void)
- 108          {
- 109   1          Port_IO_Init();
- 110   1          Oscillator_Init();
- 111   1          Interrupts_Init();
- 112   1      }
- 113          
+  56   1          // P1.7  -  CEX5 (PCA),  Open-Drain, Digital
+  57   1      
+  58   1          // P2.0  -  Unassigned,  Open-Drain, Digital
+  59   1          // P2.1  -  Unassigned,  Open-Drain, Digital
+  60   1          // P2.2  -  Unassigned,  Open-Drain, Digital
+  61   1          // P2.3  -  Unassigned,  Open-Drain, Digital
+  62   1          // P2.4  -  Unassigned,  Open-Drain, Digital
+  63   1          // P2.5  -  Unassigned,  Open-Drain, Digital
+  64   1          // P2.6  -  Unassigned,  Open-Drain, Digital
+  65   1          // P2.7  -  Unassigned,  Open-Drain, Digital
+  66   1      
+  67   1          // P3.0  -  Unassigned,  Push-Pull,  Digital
+  68   1          // P3.1  -  Unassigned,  Push-Pull,  Digital
+  69   1          // P3.2  -  Unassigned,  Push-Pull,  Digital
+  70   1          // P3.3  -  Unassigned,  Push-Pull,  Digital
+  71   1          // P3.4  -  Unassigned,  Push-Pull,  Digital
+  72   1          // P3.5  -  Unassigned,  Push-Pull,  Digital
+  73   1          // P3.6  -  Unassigned,  Push-Pull,  Digital
+  74   1          // P3.7  -  Unassigned,  Push-Pull,  Digital
+  75   1      
+  76   1          SFRPAGE   = CONFIG_PAGE;
+  77   1          P3MDOUT   = 0xFF;
+  78   1          XBR0      = 0x37;
+  79   1          XBR2      = 0x44;
+  80   1      }
+  81          
+  82          void Oscillator_Init()
+  83          {
+  84   1          SFRPAGE   = CONFIG_PAGE;
+  85   1          OSCICN    = 0x83;
+  86   1      }
+  87          
+  88          void Interrupts_Init()
+  89          {
+  90   1          IE        = 0x85;
+  91   1      }
+  92          
+  93          // Initialization function for device,
+  94          // Call Init_Device() from your main program
+  95          void Init_Device(void)
+  96          {
+  97   1          Port_IO_Init();
+  98   1          Oscillator_Init();
+  99   1          Interrupts_Init();
+ 100   1      }
+ 101          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    104    ----
-C51 COMPILER V8.18   MAIN                                                                  02/24/2024 13:54:54 PAGE 3   
-
+   CODE SIZE        =     84    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =      4    ----
+   DATA SIZE        =      8    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
