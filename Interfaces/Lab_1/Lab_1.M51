@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.20              02/24/2024  00:30:13  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.20              02/24/2024  13:54:54  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
@@ -13,6 +13,7 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\main.obj (MAIN)
   C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_INIT)
 
 
 LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (MAIN)
@@ -24,14 +25,24 @@ LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (MAIN)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            IDATA   0008H     0001H     UNIT         ?STACK
+            DATA    0008H     0004H     UNIT         ?DT?MAIN
+            IDATA   000CH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-                    0003H     07FDH                  *** GAP ***
-            CODE    0800H     000CH     UNIT         ?C_C51STARTUP
-            CODE    080CH     0005H     UNIT         ?PR?MAIN?MAIN
-            CODE    0811H     0001H     UNIT         ?PR?INIT_DEVICE?MAIN
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     000DH                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     07EAH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0038H     UNIT         ?PR?MAIN?MAIN
+            CODE    08C4H     0010H     UNIT         ?PR?PORT_IO_INIT?MAIN
+            CODE    08D4H     000AH     UNIT         ?C_INITSEG
+            CODE    08DEH     0009H     UNIT         ?PR?INIT_DEVICE?MAIN
+            CODE    08E7H     0007H     UNIT         ?PR?OSCILLATOR_INIT?MAIN
+            CODE    08EEH     0006H     UNIT         ?PR?BUT1_PRESS?MAIN
+            CODE    08F4H     0006H     UNIT         ?PR?BUT2_PRESS?MAIN
+            CODE    08FAH     0004H     UNIT         ?PR?INTERRUPTS_INIT?MAIN
 
 
 
@@ -44,10 +55,19 @@ SEGMENT
 ---------------------
 ?C_C51STARTUP
   +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
 
 ?PR?MAIN?MAIN
   +--> ?PR?INIT_DEVICE?MAIN
 
+?PR?INIT_DEVICE?MAIN
+  +--> ?PR?PORT_IO_INIT?MAIN
+  +--> ?PR?OSCILLATOR_INIT?MAIN
+  +--> ?PR?INTERRUPTS_INIT?MAIN
+
+
+
+BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  13:54:54  PAGE 2
 
 
 SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (M
@@ -58,32 +78,94 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Interfaces\Lab_1\Lab_1 (M
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:080CH         PUBLIC        main
-  C:0811H         PUBLIC        Init_Device
+  D:0008H         PUBLIC        R1
+  D:00B0H         PUBLIC        P3
+  D:0009H         PUBLIC        R2
+  D:000AH         PUBLIC        R3
+  D:0084H         PUBLIC        SFRPAGE
+  D:00A8H         PUBLIC        IE
+  D:000BH         PUBLIC        lights
+  D:00A7H         PUBLIC        P3MDOUT
+  C:08C4H         PUBLIC        Port_IO_Init
+  C:08E7H         PUBLIC        Oscillator_Init
+  D:00E1H         PUBLIC        XBR0
+  D:00E2H         PUBLIC        XBR1
+  D:00E3H         PUBLIC        XBR2
+  C:088CH         PUBLIC        main
+  C:08FAH         PUBLIC        Interrupts_Init
+  B:0088H.1       PUBLIC        IE0
+  B:0088H.3       PUBLIC        IE1
+  D:008AH         PUBLIC        OSCICN
+  C:08DEH         PUBLIC        Init_Device
+  C:08EEH         PUBLIC        But1_press
+  C:08F4H         PUBLIC        But2_press
   -------         PROC          MAIN
-  C:080CH         LINE#         7
-  C:080CH         LINE#         8
-  C:080CH         LINE#         9
-  C:080FH         LINE#         11
-  C:080FH         LINE#         12
-  C:080FH         LINE#         14
-BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  00:30:13  PAGE 2
-
-
+  C:088CH         LINE#         19
+  C:088CH         LINE#         20
+  C:088CH         LINE#         21
+  C:088FH         LINE#         22
+  C:0892H         LINE#         23
+  C:0892H         LINE#         24
+  C:0892H         LINE#         25
+  C:0895H         LINE#         26
+  C:0898H         LINE#         27
+  C:08B0H         LINE#         29
+  C:08C0H         LINE#         30
+  C:08C2H         LINE#         31
   -------         ENDPROC       MAIN
+  -------         PROC          BUT1_PRESS
+  C:08EEH         LINE#         34
+  C:08EEH         LINE#         36
+  C:08F1H         LINE#         37
+  C:08F3H         LINE#         38
+  -------         ENDPROC       BUT1_PRESS
+  -------         PROC          BUT2_PRESS
+  C:08F4H         LINE#         40
+  C:08F4H         LINE#         42
+  C:08F7H         LINE#         43
+  C:08F9H         LINE#         44
+  -------         ENDPROC       BUT2_PRESS
+  -------         PROC          PORT_IO_INIT
+  C:08C4H         LINE#         49
+  C:08C4H         LINE#         50
+  C:08C4H         LINE#         87
+  C:08C7H         LINE#         88
+  C:08CAH         LINE#         89
+  C:08CDH         LINE#         90
+  C:08D0H         LINE#         91
+  C:08D3H         LINE#         92
+  -------         ENDPROC       PORT_IO_INIT
+BL51 BANKED LINKER/LOCATER V6.20            02/24/2024  13:54:54  PAGE 3
+
+
+  -------         PROC          OSCILLATOR_INIT
+  C:08E7H         LINE#         94
+  C:08E7H         LINE#         95
+  C:08E7H         LINE#         96
+  C:08EAH         LINE#         97
+  C:08EDH         LINE#         98
+  -------         ENDPROC       OSCILLATOR_INIT
+  -------         PROC          INTERRUPTS_INIT
+  C:08FAH         LINE#         100
+  C:08FAH         LINE#         101
+  C:08FAH         LINE#         102
+  C:08FDH         LINE#         103
+  -------         ENDPROC       INTERRUPTS_INIT
   -------         PROC          INIT_DEVICE
-  C:0811H         LINE#         17
-  C:0811H         LINE#         18
-  C:0811H         LINE#         19
+  C:08DEH         LINE#         107
+  C:08DEH         LINE#         108
+  C:08DEH         LINE#         109
+  C:08E1H         LINE#         110
+  C:08E4H         LINE#         111
   -------         ENDPROC       INIT_DEVICE
   -------         ENDMOD        MAIN
 
 ******************************************************************************
 >> 
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0006H BYTE ( 0%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0077H BYTE ( 5%) *
 >> 
 ******************************************************************************
 >> 
 
-Program Size: data=9.0 xdata=0 code=21
+Program Size: data=13.0 xdata=0 code=263
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
