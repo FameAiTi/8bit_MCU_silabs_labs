@@ -1,0 +1,223 @@
+BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  10:45:14  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
+C:\SILABS\MCU\IDEFILES\C51\BIN\BL51.EXE C:\rep\8bit_MCU_silabs_labs\Labs_Syst_
+>> Obr_Otobr_Inf\Lab2\Lab1.obj TO C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Ot
+>> obr_Inf\Lab2\Lab1 RS (256) PL (68) PW (78)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab2\Lab1.obj (LAB1)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab2\
+>> Lab1 (LAB1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0028H     UNIT         ?DT?LAB1
+            IDATA   0030H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     006BH     UNIT         ?PR?WORK?LAB1
+            CODE    08F7H     002EH     UNIT         ?PR?PREOBR?LAB1
+            CODE    0925H     002BH     UNIT         ?C_INITSEG
+            CODE    0950H     0027H     UNIT         ?PR?_DELAY?LAB1
+            CODE    0977H     0018H     UNIT         ?PR?MAIN?LAB1
+            CODE    098FH     0013H     UNIT         ?PR?PORT_SETT?LAB1
+            CODE    09A2H     0007H     UNIT         ?PR?TIM_SETT?LAB1
+
+
+
+OVERLAY MAP OF MODULE:   C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
+>> ab2\Lab1 (LAB1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LAB1
+  +--> ?C_INITSEG
+
+?PR?MAIN?LAB1
+  +--> ?PR?PORT_SETT?LAB1
+  +--> ?PR?WORK?LAB1
+
+?PR?WORK?LAB1
+  +--> ?PR?PREOBR?LAB1
+  +--> ?PR?_DELAY?LAB1
+
+
+
+SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
+>> ab2\Lab1 (LAB1)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:45:14  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        LAB1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00FFH         PUBLIC        WDTCN
+  D:00B0H         PUBLIC        P3
+  D:00C8H         PUBLIC        P4
+  D:00D8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00F8H         PUBLIC        P7
+  D:0084H         PUBLIC        SFRPAGE
+  C:09A2H         PUBLIC        TIM_sett
+  C:08F7H         PUBLIC        preobr
+  D:00A7H         PUBLIC        P3MDOUT
+  D:009CH         PUBLIC        P4MDOUT
+  D:009DH         PUBLIC        P5MDOUT
+  C:0950H         PUBLIC        _delay
+  D:009FH         PUBLIC        P7MDOUT
+  D:00E3H         PUBLIC        XBR2
+  C:0977H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  D:008AH         PUBLIC        OSCICN
+  D:0008H         PUBLIC        svet
+  C:088CH         PUBLIC        work
+  B:0088H.5       PUBLIC        TF0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  B:00B0H.5       PUBLIC        a
+  B:00C8H.5       PUBLIC        b
+  D:0010H         PUBLIC        d
+  D:0018H         PUBLIC        i
+  C:098FH         PUBLIC        PORT_sett
+  D:001AH         PUBLIC        p
+  D:001CH         PUBLIC        v
+  -------         PROC          MAIN
+  C:0977H         LINE#         29
+  C:0977H         LINE#         31
+  C:097AH         LINE#         33
+  C:097CH         LINE#         35
+  C:097FH         LINE#         37
+  C:0982H         LINE#         39
+  C:0984H         LINE#         41
+  C:0987H         LINE#         43
+  C:098AH         LINE#         45
+  C:098AH         LINE#         47
+  -------         ENDPROC       MAIN
+  -------         PROC          PORT_SETT
+  C:098FH         LINE#         53
+  C:098FH         LINE#         55
+  C:098FH         LINE#         57
+  C:0992H         LINE#         59
+  C:0995H         LINE#         61
+  C:0998H         LINE#         63
+  C:099BH         LINE#         65
+  C:099EH         LINE#         67
+  C:09A1H         LINE#         69
+  -------         ENDPROC       PORT_SETT
+  -------         PROC          TIM_SETT
+  C:09A2H         LINE#         73
+  C:09A2H         LINE#         75
+  C:09A2H         LINE#         77
+  C:09A5H         LINE#         79
+  C:09A8H         LINE#         81
+  -------         ENDPROC       TIM_SETT
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:45:14  PAGE 3
+
+
+  -------         PROC          WORK
+  C:088CH         LINE#         83
+  C:088CH         LINE#         85
+  C:0891H         LINE#         87
+  C:0891H         LINE#         89
+  C:0894H         LINE#         95
+  C:0896H         LINE#         97
+  C:0898H         LINE#         99
+  C:089BH         LINE#         101
+  C:089EH         LINE#         103
+  C:08A0H         LINE#         105
+  C:08A2H         LINE#         107
+  C:08A4H         LINE#         109
+  C:08A6H         LINE#         111
+  C:08B1H         LINE#         113
+  C:08B4H         LINE#         115
+  C:08B6H         LINE#         117
+  C:08B8H         LINE#         119
+  C:08BFH         LINE#         123
+  C:08C1H         LINE#         125
+  C:08C3H         LINE#         127
+  C:08C6H         LINE#         129
+  C:08C9H         LINE#         131
+  C:08CBH         LINE#         133
+  C:08CDH         LINE#         135
+  C:08CFH         LINE#         137
+  C:08D1H         LINE#         139
+  C:08DCH         LINE#         141
+  C:08DFH         LINE#         143
+  C:08E1H         LINE#         145
+  C:08E3H         LINE#         149
+  C:08F6H         LINE#         151
+  -------         ENDPROC       WORK
+  -------         PROC          PREOBR
+  -------         DO            
+  D:0006H         SYMBOL        t
+  -------         ENDDO         
+  C:08F7H         LINE#         153
+  C:08F7H         LINE#         157
+  C:08F7H         LINE#         159
+  C:08FAH         LINE#         161
+  C:08FAH         LINE#         163
+  C:090CH         LINE#         165
+  C:090CH         LINE#         166
+  C:0919H         LINE#         167
+  C:0919H         LINE#         169
+  C:091EH         LINE#         170
+  C:0924H         LINE#         172
+  -------         ENDPROC       PREOBR
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        del
+  C:0950H         LINE#         178
+  C:0950H         LINE#         180
+  C:0953H         LINE#         184
+  C:0956H         LINE#         186
+  C:0959H         LINE#         188
+  C:095BH         LINE#         190
+  C:095FH         LINE#         192
+  C:0962H         LINE#         194
+  C:0965H         LINE#         196
+  C:0968H         LINE#         198
+  C:096DH         LINE#         200
+  C:0971H         LINE#         202
+  C:0973H         LINE#         204
+  C:0976H         LINE#         206
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:45:14  PAGE 4
+
+
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        LAB1
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIM_SETT?LAB1
+
+******************************************************************************
+>> 
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 011CH BYTE (13%) *
+>> 
+******************************************************************************
+>> 
+
+Program Size: data=49.0 xdata=0 code=428
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

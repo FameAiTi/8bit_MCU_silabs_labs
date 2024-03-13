@@ -44,9 +44,9 @@ void main (void)
 
  	preobr_norm(2);
  	work ();
-	preobr_norm(1);
+		preobr_norm(1);
  	work ();
-	//for(l = 0; l < 2000; l++);       // за 10 секунд воспринял 20 кругов
+	
 	
 	 
  }

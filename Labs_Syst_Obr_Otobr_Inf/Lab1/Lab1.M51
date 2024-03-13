@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  10:08:50  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  10:26:22  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
@@ -67,7 +67,7 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
 
   -------         MODULE        LAB1
   C:0000H         SYMBOL        _ICE_DUMMY_
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:08:50  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:26:22  PAGE 2
 
 
   D:00FFH         PUBLIC        WDTCN
@@ -135,7 +135,7 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
   -------         ENDPROC       WORK
   -------         PROC          PREOBR
   -------         DO            
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:08:50  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:26:22  PAGE 3
 
 
   D:0004H         SYMBOL        i

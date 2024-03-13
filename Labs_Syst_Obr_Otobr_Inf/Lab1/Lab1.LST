@@ -1,4 +1,4 @@
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:08:49 PAGE 1   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:26:22 PAGE 1   
 
 
 C51 COMPILER V8.18, COMPILATION OF MODULE LAB1
@@ -53,16 +53,16 @@ line level    source
   44   2      
   45   2              preobr_norm(2);
   46   2              work ();
-  47   2              preobr_norm(1);
+  47   2                      preobr_norm(1);
   48   2              work ();
-  49   2              //for(l = 0; l < 2000; l++);       // за 10 секунд воспринял 20 кругов
+  49   2              
   50   2              
   51   2               
   52   2       }
   53   1      
   54   1      }
   55          
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:08:49 PAGE 2   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:26:22 PAGE 2   
 
   56          //настройка портов
   57          
@@ -126,7 +126,7 @@ line level    source
  115   1               f = (~value_diods);
  116   1      
  117   1      }
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:08:49 PAGE 3   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:26:22 PAGE 3   
 
 
 

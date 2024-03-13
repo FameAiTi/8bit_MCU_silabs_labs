@@ -1,0 +1,17 @@
+
+BL51 BANKED LINKER/LOCATER V6.20 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+"C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab2\Lab1.obj"  TO "C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab2\Lab1" RS(256) PL(68) PW(78) 
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIM_SETT?LAB1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 011CH BYTE (13%) *
+******************************************************************************
+
+>> 
+>> 
+>> 
+Program Size: data=49.0 xdata=0 code=428
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
