@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  10:56:12  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  11:58:12  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
@@ -25,21 +25,21 @@ LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab2\
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0028H     UNIT         ?DT?LAB1
-            DATA    0030H     0002H     UNIT         _DATA_GROUP_
-            IDATA   0032H     0001H     UNIT         ?STACK
+            DATA    0008H     002EH     UNIT         ?DT?LAB1
+            DATA    0036H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0038H     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
             CODE    0800H     008CH     UNIT         ?C_C51STARTUP
-            CODE    088CH     006FH     UNIT         ?PR?WORK?LAB1
-            CODE    08FBH     004BH     UNIT         ?PR?_PREOBR?LAB1
-            CODE    0946H     002BH     UNIT         ?C_INITSEG
-            CODE    0971H     0027H     UNIT         ?PR?_DELAY?LAB1
-            CODE    0998H     0018H     UNIT         ?PR?MAIN?LAB1
-            CODE    09B0H     0013H     UNIT         ?PR?PORT_SETT?LAB1
-            CODE    09C3H     0007H     UNIT         ?PR?TIM_SETT?LAB1
+            CODE    088CH     004BH     UNIT         ?PR?WORK?LAB1
+            CODE    08D7H     004BH     UNIT         ?PR?_PREOBR?LAB1
+            CODE    0922H     003AH     UNIT         ?PR?MAIN?LAB1
+            CODE    095CH     0033H     UNIT         ?C_INITSEG
+            CODE    098FH     0027H     UNIT         ?PR?_DELAY?LAB1
+            CODE    09B6H     0013H     UNIT         ?PR?PORT_SETT?LAB1
+            CODE    09C9H     0007H     UNIT         ?PR?TIM_SETT?LAB1
 
 
 
@@ -62,12 +62,12 @@ SEGMENT                          DATA_GROUP
   +--> ?PR?_PREOBR?LAB1
   +--> ?PR?_DELAY?LAB1
 
-?PR?_PREOBR?LAB1               0030H    0002H
+?PR?_PREOBR?LAB1               0036H    0002H
 
 
 
 SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:56:12  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  11:58:12  PAGE 2
 
 
 >> ab2\Lab1 (LAB1)
@@ -84,138 +84,139 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
   B:00A8H.7       PUBLIC        EA
   D:00F8H         PUBLIC        P7
   D:0084H         PUBLIC        SFRPAGE
-  C:09C3H         PUBLIC        TIM_sett
-  C:08FBH         PUBLIC        _preobr
+  C:09C9H         PUBLIC        TIM_sett
+  C:08D7H         PUBLIC        _preobr
   D:00A7H         PUBLIC        P3MDOUT
   D:009CH         PUBLIC        P4MDOUT
   D:009DH         PUBLIC        P5MDOUT
-  C:0971H         PUBLIC        _delay
+  C:098FH         PUBLIC        _delay
   D:009FH         PUBLIC        P7MDOUT
   D:00E3H         PUBLIC        XBR2
-  C:0998H         PUBLIC        main
+  C:0922H         PUBLIC        main
   D:0089H         PUBLIC        TMOD
+  D:0008H         PUBLIC        sec
   D:008AH         PUBLIC        OSCICN
-  D:0008H         PUBLIC        svet
+  D:000AH         PUBLIC        svet
   C:088CH         PUBLIC        work
   B:0088H.5       PUBLIC        TF0
+  D:0012H         PUBLIC        value_tim
   D:008CH         PUBLIC        TH0
   D:008AH         PUBLIC        TL0
   B:0088H.4       PUBLIC        TR0
   B:00B0H.5       PUBLIC        a
   B:00C8H.5       PUBLIC        b
-  D:0010H         PUBLIC        d
-  D:0018H         PUBLIC        i
-  C:09B0H         PUBLIC        PORT_sett
-  D:001AH         PUBLIC        p
-  D:001CH         PUBLIC        v
+  D:0014H         PUBLIC        d
+  D:001CH         PUBLIC        g
+  D:001EH         PUBLIC        i
+  C:09B6H         PUBLIC        PORT_sett
+  D:0020H         PUBLIC        p
+  D:0022H         PUBLIC        v
   -------         PROC          MAIN
-  C:0998H         LINE#         29
-  C:0998H         LINE#         31
-  C:099BH         LINE#         33
-  C:099DH         LINE#         35
-  C:09A0H         LINE#         37
-  C:09A3H         LINE#         39
-  C:09A5H         LINE#         41
-  C:09A8H         LINE#         43
-  C:09ABH         LINE#         45
-  C:09ABH         LINE#         47
+  C:0922H         LINE#         32
+  C:0922H         LINE#         34
+  C:0925H         LINE#         36
+  C:0927H         LINE#         38
+  C:092AH         LINE#         40
+  C:092DH         LINE#         42
+  C:092FH         LINE#         44
+  C:0932H         LINE#         46
+  C:0935H         LINE#         48
+  C:0935H         LINE#         50
+  C:0935H         LINE#         51
+  C:0942H         LINE#         52
+  C:0942H         LINE#         53
+  C:0947H         LINE#         54
+  C:0949H         LINE#         56
+  C:0949H         LINE#         58
+  C:0951H         LINE#         59
+  C:0951H         LINE#         61
+  C:0957H         LINE#         63
+  C:095AH         LINE#         67
   -------         ENDPROC       MAIN
   -------         PROC          PORT_SETT
-  C:09B0H         LINE#         53
-  C:09B0H         LINE#         55
-  C:09B0H         LINE#         57
-  C:09B3H         LINE#         59
-  C:09B6H         LINE#         61
-  C:09B9H         LINE#         63
-  C:09BCH         LINE#         65
-  C:09BFH         LINE#         67
-  C:09C2H         LINE#         69
+  C:09B6H         LINE#         73
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  11:58:12  PAGE 3
+
+
+  C:09B6H         LINE#         75
+  C:09B6H         LINE#         77
+  C:09B9H         LINE#         79
+  C:09BCH         LINE#         81
+  C:09BFH         LINE#         83
+  C:09C2H         LINE#         85
+  C:09C5H         LINE#         87
+  C:09C8H         LINE#         89
   -------         ENDPROC       PORT_SETT
   -------         PROC          TIM_SETT
-  C:09C3H         LINE#         73
-  C:09C3H         LINE#         75
-  C:09C3H         LINE#         77
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:56:12  PAGE 3
-
-
-  C:09C6H         LINE#         79
-  C:09C9H         LINE#         81
+  C:09C9H         LINE#         93
+  C:09C9H         LINE#         95
+  C:09C9H         LINE#         97
+  C:09CCH         LINE#         99
+  C:09CFH         LINE#         101
   -------         ENDPROC       TIM_SETT
   -------         PROC          WORK
-  C:088CH         LINE#         83
-  C:088CH         LINE#         85
-  C:0891H         LINE#         87
-  C:0891H         LINE#         89
-  C:0898H         LINE#         95
-  C:089AH         LINE#         97
-  C:089CH         LINE#         99
-  C:089FH         LINE#         101
-  C:08A2H         LINE#         103
-  C:08A4H         LINE#         105
-  C:08A6H         LINE#         107
-  C:08A8H         LINE#         109
-  C:08AAH         LINE#         111
-  C:08B5H         LINE#         113
-  C:08B8H         LINE#         115
-  C:08BAH         LINE#         117
-  C:08BCH         LINE#         119
-  C:08C3H         LINE#         123
-  C:08C5H         LINE#         125
-  C:08C7H         LINE#         127
-  C:08CAH         LINE#         129
-  C:08CDH         LINE#         131
-  C:08CFH         LINE#         133
-  C:08D1H         LINE#         135
-  C:08D3H         LINE#         137
-  C:08D5H         LINE#         139
-  C:08E0H         LINE#         141
-  C:08E3H         LINE#         143
-  C:08E5H         LINE#         145
-  C:08E7H         LINE#         149
-  C:08FAH         LINE#         151
+  C:088CH         LINE#         103
+  C:088CH         LINE#         105
+  C:0891H         LINE#         107
+  C:0891H         LINE#         109
+  C:0898H         LINE#         115
+  C:089AH         LINE#         117
+  C:089CH         LINE#         119
+  C:089FH         LINE#         121
+  C:08A2H         LINE#         123
+  C:08A4H         LINE#         125
+  C:08A6H         LINE#         127
+  C:08A8H         LINE#         129
+  C:08AAH         LINE#         131
+  C:08B5H         LINE#         133
+  C:08B8H         LINE#         135
+  C:08BAH         LINE#         137
+  C:08BCH         LINE#         139
+  C:08C3H         LINE#         141
+  C:08D6H         LINE#         143
   -------         ENDPROC       WORK
   -------         PROC          _PREOBR
-  D:0030H         SYMBOL        current_cel
+  D:0036H         SYMBOL        current_cel
   -------         DO            
   D:0006H         SYMBOL        t
   -------         ENDDO         
-  C:08FBH         LINE#         153
-  C:08FFH         LINE#         157
-  C:08FFH         LINE#         159
-  C:0902H         LINE#         161
-  C:0902H         LINE#         163
-  C:0914H         LINE#         165
-  C:0914H         LINE#         166
-  C:091CH         LINE#         167
-  C:091CH         LINE#         168
-  C:092BH         LINE#         169
-  C:092DH         LINE#         171
-  C:092DH         LINE#         172
-  C:093AH         LINE#         173
-  C:093AH         LINE#         176
-  C:093AH         LINE#         178
-  C:093FH         LINE#         179
-  C:0945H         LINE#         181
+  C:08D7H         LINE#         145
+  C:08DBH         LINE#         149
+  C:08DBH         LINE#         151
+  C:08DEH         LINE#         153
+  C:08DEH         LINE#         155
+  C:08F0H         LINE#         157
+  C:08F0H         LINE#         158
+  C:08F8H         LINE#         159
+  C:08F8H         LINE#         160
+  C:0907H         LINE#         161
+  C:0909H         LINE#         163
+  C:0909H         LINE#         164
+  C:0916H         LINE#         165
+  C:0916H         LINE#         168
+  C:0916H         LINE#         170
+  C:091BH         LINE#         171
+  C:0921H         LINE#         173
   -------         ENDPROC       _PREOBR
   -------         PROC          _DELAY
   D:0006H         SYMBOL        del
-  C:0971H         LINE#         187
-  C:0971H         LINE#         189
-  C:0974H         LINE#         193
-  C:0977H         LINE#         195
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:56:12  PAGE 4
+  C:098FH         LINE#         179
+  C:098FH         LINE#         181
+  C:0992H         LINE#         185
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  11:58:12  PAGE 4
 
 
-  C:097AH         LINE#         197
-  C:097CH         LINE#         199
-  C:0980H         LINE#         201
-  C:0983H         LINE#         203
-  C:0986H         LINE#         205
-  C:0989H         LINE#         207
-  C:098EH         LINE#         209
-  C:0992H         LINE#         211
-  C:0994H         LINE#         213
-  C:0997H         LINE#         215
+  C:0995H         LINE#         187
+  C:0998H         LINE#         189
+  C:099AH         LINE#         191
+  C:099EH         LINE#         193
+  C:09A1H         LINE#         195
+  C:09A4H         LINE#         197
+  C:09A7H         LINE#         199
+  C:09ACH         LINE#         201
+  C:09B0H         LINE#         203
+  C:09B2H         LINE#         205
+  C:09B5H         LINE#         207
   -------         ENDPROC       _DELAY
   -------         ENDMOD        LAB1
 
@@ -224,10 +225,10 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
 
 ******************************************************************************
 >> 
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 013DH BYTE (15%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0143H BYTE (15%) *
 >> 
 ******************************************************************************
 >> 
 
-Program Size: data=51.0 xdata=0 code=461
+Program Size: data=57.0 xdata=0 code=467
 LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
