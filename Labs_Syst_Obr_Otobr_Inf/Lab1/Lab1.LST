@@ -1,4 +1,4 @@
-C51 COMPILER V8.18   LAB1                                                                  02/15/2024 11:55:28 PAGE 1   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:03:11 PAGE 1   
 
 
 C51 COMPILER V8.18, COMPILATION OF MODULE LAB1
@@ -51,18 +51,18 @@ line level    source
   42   1      
   43   1       {
   44   2      
-  45   2              preobr_norm(k);
+  45   2              preobr_norm(1);
   46   2              work ();
-  47   2              for(l = 0; l < 15000; l++);
-  48   2              k*=2;
-  49   2              if(k > 0x80)
-  50   2                      k = 1;
+  47   2              for(l = 0; l < 2000; l++);       // за 10 секунд воспринял 20 кругов
+  48   2              preobr_norm(0);
+  49   2              work ();
+  50   2              for(l = 0; l < 10; l++);       // за 10 секунд воспринял 20 кругов
   51   2               
   52   2       }
   53   1      
   54   1      }
   55          
-C51 COMPILER V8.18   LAB1                                                                  02/15/2024 11:55:28 PAGE 2   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:03:11 PAGE 2   
 
   56          //настройка портов
   57          
@@ -126,12 +126,12 @@ line level    source
  115   1               f = (~value_diods);
  116   1      
  117   1      }
-C51 COMPILER V8.18   LAB1                                                                  02/15/2024 11:55:28 PAGE 3   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:03:11 PAGE 3   
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    201    ----
+   CODE SIZE        =    234    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

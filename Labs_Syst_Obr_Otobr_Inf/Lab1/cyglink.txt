@@ -1,1 +1,1 @@
-"C:\rep\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1.obj"  TO "C:\rep\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1"  RS(256) PL(68) PW(78)   
+"C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1.obj"  TO "C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1" RS(256) PL(68) PW(78) 
