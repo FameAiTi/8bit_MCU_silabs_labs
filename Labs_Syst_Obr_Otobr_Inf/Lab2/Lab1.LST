@@ -1,4 +1,4 @@
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:45:14 PAGE 1   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:56:11 PAGE 1   
 
 
 C51 COMPILER V8.18, COMPILATION OF MODULE LAB1
@@ -17,7 +17,7 @@ line level    source
    8          
    9          void work (void);
   10          
-  11          void preobr (void);
+  11          void preobr (int);
   12          
   13          void TIM_sett (void);
   14          
@@ -25,7 +25,7 @@ line level    source
   16          
   17          int v[]={0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x10, 0x90};    // преобразуемые цифры
   18          
-  19          int d[]={2, 3, 4, 5};                                     // вводите сюда данные
+  19          int d[]={2, 1, 1, 1};                                     // вводите сюда данные
   20          
   21          int svet[]={0xDF, 0xBF, 0x7F, 0xEF};        //адреса индикаторов
   22          
@@ -62,7 +62,7 @@ line level    source
   53          void PORT_sett (void)
   54          
   55          {
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:45:14 PAGE 2   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:56:11 PAGE 2   
 
   56   1      
   57   1               SFRPAGE = CONFIG_PAGE;  
@@ -97,7 +97,7 @@ line level    source
   86   1      
   87   1               while (i<4)
   88   1      
-  89   1               {preobr ();
+  89   1               {preobr (i);
   90   2      
   91   2      //----------------------------------------------------------
   92   2      
@@ -126,7 +126,7 @@ line level    source
  115   2               b=1;           //Разрешение работы регистра DD12
  116   2      
  117   2               a=0;                      //Разрешение работы дешифратора
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:45:14 PAGE 3   
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:56:11 PAGE 3   
 
  118   2      
  119   2               delay (250);           // формирование задержки
@@ -163,7 +163,7 @@ line level    source
  150   1      
  151   1      }
  152          
- 153          void preobr (void)
+ 153          void preobr (int current_cel)
  154          
  155          // ввод:p преобразуемый символ, вывод:p- код на семисегментнике
  156          
@@ -176,60 +176,70 @@ line level    source
  163   1               {        if (t==d[i])   // ищем что за цифра
  164   2      
  165   2                        {
- 166   3                                                      p=v[t];
- 167   3                                        }              // загрузка кода цифры
- 168   2      
- 169   2                         t++;
- 170   2                       }
- 171   1      
- 172   1      }
- 173          
- 174           
- 175          
- 176          //формирователь задержек
- 177          
- 178          void delay (unsigned int del)
- 179          
-C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:45:14 PAGE 4   
+ 166   3                                                      if( i == 1)
+ 167   3                                                      {
+ 168   4                                                              p = v[t] & 0x7F;
+ 169   4                                                      }
+ 170   3                                                      else
+ 171   3                                                      {
+ 172   4                                                              p=v[t];
+ 173   4                                                      }                                               
+ 174   3      
+ 175   3                                                      
+ 176   3                                        }              // загрузка кода цифры
+ 177   2      
+ 178   2                         t++;
+ 179   2                       }
+C51 COMPILER V8.18   LAB1                                                                  03/13/2024 10:56:11 PAGE 4   
 
- 180          {        SFRPAGE  = TIMER01_PAGE;
- 181   1      
- 182   1               //для мс
- 183   1      
- 184   1               TH0 = 0xFE;
- 185   1      
- 186   1               TL0 = 0x0B;
- 187   1      
- 188   1               TR0=1;
- 189   1      
- 190   1               while (del!=0)
- 191   1      
- 192   1               {        while (!TF0){}
- 193   2      
- 194   2                         TH0 = 0xFE;
- 195   2      
- 196   2                         TL0 = 0x0B;
- 197   2      
- 198   2                         del--;
- 199   2      
- 200   2                         TF0=0;       }       
- 201   1      
- 202   1               TR0=0;
- 203   1      
- 204   1               SFRPAGE = CONFIG_PAGE;
- 205   1      
- 206   1      }
+ 180   1      
+ 181   1      }
+*** WARNING C280 IN LINE 153 OF LAB1.C: 'current_cel': unreferenced local variable
+ 182          
+ 183           
+ 184          
+ 185          //формирователь задержек
+ 186          
+ 187          void delay (unsigned int del)
+ 188          
+ 189          {        SFRPAGE  = TIMER01_PAGE;
+ 190   1      
+ 191   1               //для мс
+ 192   1      
+ 193   1               TH0 = 0xFE;
+ 194   1      
+ 195   1               TL0 = 0x0B;
+ 196   1      
+ 197   1               TR0=1;
+ 198   1      
+ 199   1               while (del!=0)
+ 200   1      
+ 201   1               {        while (!TF0){}
+ 202   2      
+ 203   2                         TH0 = 0xFE;
+ 204   2      
+ 205   2                         TL0 = 0x0B;
+ 206   2      
+ 207   2                         del--;
+ 208   2      
+ 209   2                         TF0=0;       }       
+ 210   1      
+ 211   1               TR0=0;
+ 212   1      
+ 213   1               SFRPAGE = CONFIG_PAGE;
+ 214   1      
+ 215   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    242    ----
+   CODE SIZE        =    275    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     40    ----
+   DATA SIZE        =     40       2
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

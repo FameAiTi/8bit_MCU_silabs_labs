@@ -8,7 +8,7 @@ void PORT_sett (void);
 
 void work (void);
 
-void preobr (void);
+void preobr (int);
 
 void TIM_sett (void);
 
@@ -16,7 +16,7 @@ void delay (unsigned int del);
 
 int v[]={0xC0, 0xF9, 0xA4, 0xB0, 0x99, 0x92, 0x82, 0xF8, 0x10, 0x90};    // преобразуемые цифры
 
-int d[]={2, 3, 4, 5};                                     // вводите сюда данные
+int d[]={2, 1, 1, 1};                                     // вводите сюда данные
 
 int svet[]={0xDF, 0xBF, 0x7F, 0xEF};        //адреса индикаторов
 
@@ -86,7 +86,7 @@ void work (void)
 
          while (i<4)
 
-         {preobr ();
+         {preobr (i);
 
 //----------------------------------------------------------
 
@@ -150,7 +150,7 @@ void work (void)
 
 }
 
-void preobr (void)
+void preobr (int current_cel)
 
 // ввод:p преобразуемый символ, вывод:p- код на семисегментнике
 
@@ -162,9 +162,21 @@ void preobr (void)
 
          {        if (t==d[i])   // ищем что за цифра
 
-                   {p=v[t];}              // загрузка кода цифры
+                  {
+						if( i == 1)
+						{
+							p = v[t] & 0x7F;
+						}
+						else
+						{
+							p=v[t];
+						}				  		
 
-                   t++;}
+				  		
+				  }              // загрузка кода цифры
+
+                   t++;
+		 }
 
 }
 
