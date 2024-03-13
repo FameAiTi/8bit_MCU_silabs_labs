@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  10:03:11  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.20              03/13/2024  10:08:50  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.20, INVOKED BY:
@@ -13,7 +13,6 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab1\Lab1.obj (LAB1)
   C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_STARTUP)
-  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?SLCMP)
   C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_INIT)
 
 
@@ -32,14 +31,13 @@ LINK MAP OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\Lab1\
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     07FDH                  *** GAP ***
-            CODE    0800H     0097H     UNIT         ?PR?MAIN?LAB1
-            CODE    0897H     008CH     UNIT         ?C_C51STARTUP
-            CODE    0923H     0028H     UNIT         ?PR?PREOBR?LAB1
-            CODE    094BH     0016H     UNIT         ?C?LIB_CODE
-            CODE    0961H     0013H     UNIT         ?PR?PORT_SETT?LAB1
-            CODE    0974H     0013H     UNIT         ?C_INITSEG
-            CODE    0987H     000FH     UNIT         ?PR?WORK?LAB1
-            CODE    0996H     0009H     UNIT         ?PR?_PREOBR_NORM?LAB1
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0029H     UNIT         ?PR?MAIN?LAB1
+            CODE    08B5H     0028H     UNIT         ?PR?PREOBR?LAB1
+            CODE    08DDH     0013H     UNIT         ?PR?PORT_SETT?LAB1
+            CODE    08F0H     0013H     UNIT         ?C_INITSEG
+            CODE    0903H     000FH     UNIT         ?PR?WORK?LAB1
+            CODE    0912H     0009H     UNIT         ?PR?_PREOBR_NORM?LAB1
 
 
 
@@ -67,11 +65,11 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
   VALUE           TYPE          NAME
   ----------------------------------
 
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:03:11  PAGE 2
-
-
   -------         MODULE        LAB1
   C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:08:50  PAGE 2
+
+
   D:00FFH         PUBLIC        WDTCN
   D:00B0H         PUBLIC        P3
   D:00C8H         PUBLIC        P4
@@ -79,103 +77,98 @@ SYMBOL TABLE OF MODULE:  C:\rep\8bit_MCU_silabs_labs\Labs_Syst_Obr_Otobr_Inf\L
   B:00A8H.7       PUBLIC        EA
   D:00F8H         PUBLIC        P7
   D:0084H         PUBLIC        SFRPAGE
-  C:0923H         PUBLIC        preobr
+  C:08B5H         PUBLIC        preobr
   D:00A7H         PUBLIC        P3MDOUT
   D:009CH         PUBLIC        P4MDOUT
   D:009DH         PUBLIC        P5MDOUT
   D:009FH         PUBLIC        P7MDOUT
   D:00E3H         PUBLIC        XBR2
-  C:0800H         PUBLIC        main
-  C:0996H         PUBLIC        _preobr_norm
+  C:088CH         PUBLIC        main
+  C:0912H         PUBLIC        _preobr_norm
   D:008AH         PUBLIC        OSCICN
-  C:0987H         PUBLIC        work
+  C:0903H         PUBLIC        work
   B:00B0H.5       PUBLIC        a
   B:00C8H.5       PUBLIC        b
   D:0008H         PUBLIC        d
   D:000AH         PUBLIC        f
-  C:0961H         PUBLIC        PORT_sett
+  C:08DDH         PUBLIC        PORT_sett
   D:000CH         PUBLIC        k
   D:000EH         PUBLIC        l
   -------         PROC          MAIN
-  C:0800H         LINE#         21
-  C:0800H         LINE#         23
-  C:0803H         LINE#         25
-  C:0805H         LINE#         27
-  C:0808H         LINE#         29
-  C:080BH         LINE#         31
-  C:080DH         LINE#         33
-  C:0810H         LINE#         35
-  C:0813H         LINE#         41
-  C:0813H         LINE#         43
-  C:0813H         LINE#         45
-  C:081AH         LINE#         46
-  C:081DH         LINE#         47
-  C:0856H         LINE#         48
-  C:085CH         LINE#         49
-  C:085FH         LINE#         50
+  C:088CH         LINE#         21
+  C:088CH         LINE#         23
+  C:088FH         LINE#         25
+  C:0891H         LINE#         27
+  C:0894H         LINE#         29
+  C:0897H         LINE#         31
+  C:0899H         LINE#         33
+  C:089CH         LINE#         35
+  C:089FH         LINE#         41
+  C:089FH         LINE#         43
+  C:089FH         LINE#         45
+  C:08A6H         LINE#         46
+  C:08A9H         LINE#         47
+  C:08B0H         LINE#         48
+  C:08B3H         LINE#         52
   -------         ENDPROC       MAIN
   -------         PROC          PORT_SETT
-  C:0961H         LINE#         58
-  C:0961H         LINE#         60
-  C:0961H         LINE#         62
-  C:0964H         LINE#         64
-  C:0967H         LINE#         66
-  C:096AH         LINE#         68
-  C:096DH         LINE#         70
-  C:0970H         LINE#         72
-  C:0973H         LINE#         74
+  C:08DDH         LINE#         58
+  C:08DDH         LINE#         60
+  C:08DDH         LINE#         62
+  C:08E0H         LINE#         64
+  C:08E3H         LINE#         66
+  C:08E6H         LINE#         68
+  C:08E9H         LINE#         70
+  C:08ECH         LINE#         72
+  C:08EFH         LINE#         74
   -------         ENDPROC       PORT_SETT
   -------         PROC          WORK
-  C:0987H         LINE#         76
-  C:0987H         LINE#         78
-  C:0987H         LINE#         79
-  C:0989H         LINE#         81
-  C:098BH         LINE#         83
-  C:098EH         LINE#         85
-  C:0991H         LINE#         87
-  C:0993H         LINE#         89
-  C:0995H         LINE#         91
-BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:03:11  PAGE 3
-
-
+  C:0903H         LINE#         76
+  C:0903H         LINE#         78
+  C:0903H         LINE#         79
+  C:0905H         LINE#         81
+  C:0907H         LINE#         83
+  C:090AH         LINE#         85
+  C:090DH         LINE#         87
+  C:090FH         LINE#         89
+  C:0911H         LINE#         91
   -------         ENDPROC       WORK
   -------         PROC          PREOBR
   -------         DO            
+BL51 BANKED LINKER/LOCATER V6.20            03/13/2024  10:08:50  PAGE 3
+
+
   D:0004H         SYMBOL        i
   D:0006H         SYMBOL        c
   -------         ENDDO         
-  C:0923H         LINE#         93
-  C:0923H         LINE#         95
-  C:0923H         LINE#         97
-  C:0927H         LINE#         99
-  C:092BH         LINE#         101
-  C:0936H         LINE#         103
-  C:093CH         LINE#         105
-  C:0943H         LINE#         107
-  C:094AH         LINE#         109
+  C:08B5H         LINE#         93
+  C:08B5H         LINE#         95
+  C:08B5H         LINE#         97
+  C:08B9H         LINE#         99
+  C:08BDH         LINE#         101
+  C:08C8H         LINE#         103
+  C:08CEH         LINE#         105
+  C:08D5H         LINE#         107
+  C:08DCH         LINE#         109
   -------         ENDPROC       PREOBR
   -------         PROC          _PREOBR_NORM
   D:0006H         SYMBOL        value_diods
-  C:0996H         LINE#         111
-  C:0996H         LINE#         113
-  C:0996H         LINE#         115
-  C:099EH         LINE#         117
+  C:0912H         LINE#         111
+  C:0912H         LINE#         113
+  C:0912H         LINE#         115
+  C:091AH         LINE#         117
   -------         ENDPROC       _PREOBR_NORM
   -------         ENDMOD        LAB1
-
-  -------         MODULE        ?C?SLCMP
-  C:094BH         PUBLIC        ?C?SLCMP
-  -------         ENDMOD        ?C?SLCMP
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?PREOBR?LAB1
 
 ******************************************************************************
 >> 
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00FCH BYTE (12%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008EH BYTE ( 6%) *
 >> 
 ******************************************************************************
 >> 
 
-Program Size: data=19.0 xdata=0 code=418
+Program Size: data=19.0 xdata=0 code=286
 LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
